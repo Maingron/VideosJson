@@ -1,16 +1,19 @@
 {
 	"id": 2,
-	"title": "Haben Sie es mit Ein- und Ausschalten versucht? 👨‍🌾 Ranch Simulator S02E12 (LPT mit Tobi)",
+	"title": "Brotato",
 	"links": {
-		"youtube": "lWO5itLJQDE"
+		"youtube": "bE0zRNuTAw8",
+		"rumble": "https://rumble.com/v5hgngt-brotato.html"
 	},
 	"lang": "de",
 	"description": "",
-	"tags": "",
-	"datePub": 0,
+	"tags": "maingron,gaming,lets play,maingron lets play,maingron gaming,deutsch,gaming deutsch,Robin,Brotato Game,Blobfish Games,Arena Shooter,Roguelite,Top Down,Indie Game,Windows,Android,iOS,Nintendo Switch,PlayStation 4,PlayStation 5,Xbox One,top-down,Singleplayer-Spiel,Strategy-RPG,Abenteuer-RPG,Metroidvania,Rogue-Like-Spiele,BrotatoGame,BlobfishGames,ArenaShooter,TopDownView,IndieDevelopment,PixelArtGraphics,FastPacedAction,StrategyAndTactics,Replayability,UpgradeSystem",
 	"dateRec": 0,
-	"pub": 3,
+	"datePub": 0,
+	"pub": 2,
 	"category": "gaming",
-	"category-2": "Ranch Simulator",
-	"thumbnails": []
+	"category-2": "Brotato",
+	"thumbnails": [
+		"thumb-max.jpg"
+	]
 }

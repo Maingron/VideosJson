@@ -25,19 +25,58 @@ html, body {
 		margin: 0 30px 1em 30px;
 	}
 
-	iframe {
-		width: calc(60% - 30px);
-		margin: 0 10px 0 20px;
-		height: auto;
-		aspect-ratio: 16/9;
-		border: 0px solid transparent;
+	.videoframe {
 		border-radius: 12px;
 		position: relative;
 		display: inline-block;
 		float: left;
 		clear: left;
+		width: calc(60% - 30px);
+		margin: 0 10px 0 20px;
+		overflow: hidden;
+		padding: 0;
+		line-height: 0;
+		
 
+		button {
+			padding: 0;
+			margin: 0;
+			line-height: 0;
+			border: 0;
+			transition: .2s;
+			width: 100%;
+			aspect-ratio: 16/9;
+			position: relative;
+			display: inline-block;
+			background: radial-gradient(circle, rgba(180,58,58,1) 0%, rgba(190,128,44,1) 24%, rgba(253,29,29,1) 50%, rgba(222,222,222,1) 100%);
+
+			&:hover {
+				filter: brightness(.6);
+			}
+		}
+
+		iframe {
+			width: 100%;
+			height: auto;
+			aspect-ratio: 16/9;
+			margin: 0;
+			border: 0px solid transparent;
+			border-radius: 12px;
+			position: relative;
+			display: inline-block;
+			float: left;
+			clear: left;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+			aspect-ratio: 16/9;
+			object-fit: cover;
+		}
 	}
+
+
 
 	aside.info {
 		width: calc(40% - 30px);

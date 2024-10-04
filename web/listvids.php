@@ -18,13 +18,16 @@ $vids = json_decode($result, true);
 		<summary hidden><?= $video['title'] ?> (ID: <?= $video['id']?>)</summary>
 		<article>
 			<h2><?= $video['title'] ?> (ID: <?= $video['id']?>)</h2>
-			<iframe loading="lazy" src="https://youtube.com/embed/<?=$video['links']['youtube']?>"></iframe>
+			<div class="videoframe">
+				<button onclick="loadvidinframe(event, 'https://youtube.com/embed/<?=$video['links']['youtube']?>?autoplay=1')">
+					<img inert loading="lazy" src="/vids/<?= $video['id'] . "/" . $video['thumbnails'][0]?>" alt="Load Video">
+				</button>
+			</div>
 			<aside class="info">
 				<h3><?= $video['title'] ?></h3>
 					<p>
 						Publisher: <?= $video['pub'] ?><br>
 						Publish Date: <?= date('Y-m-d H:i', $video['datePub']); ?><br>
-
 
 						Links:
 					</p>
