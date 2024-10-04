@@ -1,19 +1,98 @@
 <?php
-$input_creatorId = 2;
+$input_creatorId = null;
+$input_videoId = null;
+
 DEFINE("VIDPATH", __DIR__."/../vids");
 $vidsArray = scandir(VIDPATH);
 $vids = [];
 $vids[] = json_decode("{}", true);
 
-foreach($vidsArray as $vid) {
-	if(is_numeric($vid)) {
-		$vidtemp = json_decode(file_get_contents(VIDPATH . "/" . $vid . "/meta.json"), true);
-		if(!isset($vidtemp['pub']) || $vidtemp['pub'] != $input_creatorId) {
+function getAllVids($vidsArray) {
+	foreach($vidsArray as $vid) {
+		if(is_numeric($vid)) {
+			$temp1 = json_decode(file_get_contents(VIDPATH . "/" . $vid . "/meta.json"), true);
+			if(isset($temp1[0])) { // We got a file with multiple videos in an array
+				foreach($temp1 as $subentry) {
+					$vids[] = $subentry;
+				}
+			} else {
+				$vids[] = $temp1;
+			}
+		}
+	}
+	return $vids;
+}
+
+function filterVidsByPub($pub, $vidsjson) {
+	$temp1 = [];
+	foreach($vidsjson as $vid) {
+		if(!isset($vid['pub']) || $vid['pub'] != $pub) {
 			continue;
 		}
-		$vids[] = $vidtemp;
+
+		$temp1[] = $vid;
 	}
+
+	return $temp1;
 }
+
+function filterVidsById($id, $vidsjson) {
+	$temp1 = [];
+	foreach($vidsjson as $vid) {
+		if(!isset($vid['id']) || $vid['id'] != $id) {
+			continue;
+		}
+
+		$temp1[] = $vid;
+		return $temp1;
+	}
+
+	return $temp1;
+}
+
+$vids = getAllVids($vidsArray);
+
+if($input_creatorId != null) {
+	$vids = filterVidsByPub($input_creatorId, $vids);
+}
+
+if($input_videoId != null) {
+	$vids = filterVidsById($input_videoId, $vids);
+}
+
+function addFallbackToVids($vidsjson) {
+	$newvidsjson = [];
+	foreach($vidsjson as $vid) {
+		if(!isset($vid['thumbnails']) || empty($vid['thumbnails'])) {
+			if(isset($vid['links']['youtube'])) {
+				$vid['thumbnails'][0] = "https://img.youtube.com/vi/".$vid['links']['youtube']."/maxresdefault.jpg";
+			} else {
+				$vid['thumbnails'][] = "";
+			}
+		}
+
+		$newvidsjson[] = $vid;
+	}
+
+	return $newvidsjson;
+}
+
+$vids = addFallbackToVids($vids);
+
+// foreach($vidsArray as $vid) {
+// 	if(is_numeric($vid)) {
+// 		$vidtemp = json_decode(file_get_contents(VIDPATH . "/" . $vid . "/meta.json"), true);
+// 		if($input_creatorId != null) {
+// 			if(!isset($vidtemp['pub']) || $vidtemp['pub'] != $input_creatorId) {
+// 				continue;
+// 			}
+// 		}
+
+
+
+// 		$vids[] = $vidtemp;
+// 	}
+// }
 
 // header('Content-Type: application/json');
 

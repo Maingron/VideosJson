@@ -6,6 +6,8 @@ html {
 html, body {
 	margin: 0;
 	padding: 0;
+	background-color: #000;
+	color: #fff;
 }
 
 * {
@@ -13,24 +15,37 @@ html, body {
 }
 
 .video {
-	display: block;
+	display: flex;
+	flex-direction: column !important;
 	width: calc(100% - 30px);
 	padding: 1em 0;
 	margin: .5em 15px;
 	background: #444444;
 	border-radius: 12px;
 	position: relative;
+	overflow: hidden;
 
 	h2 {
 		margin: 0 30px 1em 30px;
+	}
+
+	h3 {
+		margin-top: 0;
+	}
+
+	.description {
+		font: inherit;
+		width: 100%;
+		resize: none;
+		border: none;
+		background: transparent;
+		height: auto;
 	}
 
 	.videoframe {
 		border-radius: 12px;
 		position: relative;
 		display: inline-block;
-		float: left;
-		clear: left;
 		width: calc(60% - 30px);
 		margin: 0 10px 0 20px;
 		overflow: hidden;
@@ -64,8 +79,6 @@ html, body {
 			border-radius: 12px;
 			position: relative;
 			display: inline-block;
-			float: left;
-			clear: left;
 		}
 
 		img {
@@ -76,10 +89,9 @@ html, body {
 		}
 	}
 
-
-
-	aside.info {
+	.info {
 		width: calc(40% - 30px);
+		height: fit-content;
 		padding: 1em;
 		margin: 0 20px 0 10px;
 		background: #333333;
@@ -90,5 +102,42 @@ html, body {
 		overflow: hidden;
 		float: right;
 		clear: right;
+	}
+
+	.info-below {
+		line-height: normal;
+		margin: 0 20px;
+
+		p.tags {
+			color: transparent;
+			position: relative;
+
+			b {
+				color: #fff;
+			}
+
+			.tag {
+				color: #fff;
+				position: relative;
+				padding: 2px 8px;
+				background-color: #555;
+				display: inline-block;
+				margin: 2px 0;
+				border-radius: 99rem;
+			}
+		}
+	}
+
+	@media (max-width: 1000px) {
+		.videoframe,
+		.info {
+			margin: 0 20px;
+			width: calc(100% - 40px);
+			clear: both;
+		}
+
+		.videoframe {
+			margin-bottom: 10px;
+		}
 	}
 }
