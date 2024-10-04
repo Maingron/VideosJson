@@ -30,6 +30,8 @@ $vids = json_decode($result, true);
 					<b>Publisher</b>: <?= $video['pub'] ?><br>
 					<b>Date of Publishing</b>: <?= date('Y-m-d H:i', $video['datePub'] ?? 0); ?><br>
 					<b>Date of Recording</b>: <?= date('Y-m-d H:i', $video['dateRec'] ?? 0); ?><br>
+					<b>Category</b>: <span><?= $video['category']?></span><br>
+					<b>Category-2</b>: <span><?= $video['category-2']?></span><br>
 					<b>Links</b>:
 					<ul>
 						<?php foreach($video['links'] as $videoK => $videoV) {
@@ -49,8 +51,10 @@ $vids = json_decode($result, true);
 						}
 						?>
 					</ul>
-					Description:
-					<textarea class="description" rows="15" readonly><?= $video['description']; ?></textarea>
+					<?php if(!empty($video['description'])): ?>
+						<b>Description</b>:
+						<textarea class="description" rows="12" readonly><?= $video['description']; ?></textarea>
+					<?php endif; ?>
 				</p>
 				<details>
 					<summary>Full Details</summary>
@@ -73,8 +77,7 @@ $vids = json_decode($result, true);
 				</p>
 			</div>
 		</article>
-		&nbsp;
 	</details>
-	<hr>
+	<br>
 
 <?php endforeach; ?>

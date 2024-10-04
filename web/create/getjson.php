@@ -14,8 +14,8 @@
 			resultObj.id = 0+ +resultObj.id;
 			resultObj.pub = 0+ +resultObj.pub;
 
-			var links = Object.keys(resultObj).filter(function(k, v) {return k.indexOf("links[") > -1});
-			// document.body.innerHTML = JSON.stringify(resultObj);
+			// var links = Object.keys(resultObj).filter(function(k, v) {return k.indexOf("links[") > -1});
+			document.body.innerHTML = JSON.stringify(resultObj);
 		</script>
 	</body>
 </html>

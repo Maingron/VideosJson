@@ -71,6 +71,10 @@ function addFallbackToVids($vidsjson) {
 			}
 		}
 
+		if(!($vid['description']??!1)) {
+			$vid['description'] = null;
+		}
+
 		$newvidsjson[] = $vid;
 	}
 
