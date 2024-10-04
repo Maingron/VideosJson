@@ -1,0 +1,56 @@
+[
+{
+	"id": 0,
+	"name": "DUMMY / Example / System-tree", // Nickname
+	"name-pre": "Max",
+	"name-mid": "Moritz Michael",
+	"name-sur": "Mustermann",
+	"sex": null, // can be either null/0: undefined, 1: female, 2: male or custom pronouns in quotes
+	"pfp": null, // profile picture, not sure how to store. Probably either user-provided link that's supposed to update every now and then, or base64. Maybe blob in db
+	"relations": null,
+	"parent": null,
+	"inherit": ["links", "relations", "parent"], // Array of predefined props or false
+	"links": { // Some keys like youtube will be common, but the keys may be custom. The following links should be standardized. Keys ending in "-NUMBER" (e.g. twitter-2, youtube-2) are to be considered. Those are other entries for the specific platform
+		"twitter": null,
+		"instagram": null,
+		"youtube": null,
+		"steam": null,
+		"website": null,
+		"website-2": null,
+		"website-3": null,
+		"facebook": null,
+		"github": null,
+		"twitch": null,
+		"kick": null,
+		"itch": null
+	}
+},
+{
+	"id": 1,
+	"name": "Maingron",
+	"relations": [2],
+	"parent": null,
+	"pfp": "https://maingron.com/img/maingron.png",
+	"links": {
+		"twitter": "https://maingron.com/twitter",
+		"instagram": "https://maingron.com/instagram",
+		"youtube": "https://maingron.com/youtube",
+		"steam": "https://maingron.com/steam",
+		"website": "https://maingron.com",
+		"github": "https://maingron.com/github",
+		"itch": "https://maingron.com/itch",
+		"twitch": "https://maingron.com/twitch"
+	}
+},
+{
+	"id": 2,
+	"name": "Maingron Gaming",
+	"relations": [1],
+	"parent": 1,
+	"inherit": ["links"],
+	"links": {
+		"youtube": "https://maingron.com/youtube-gaming",
+		"twitch": "https://maingron.com/twitch"
+	}
+}
+]
