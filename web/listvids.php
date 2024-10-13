@@ -6,6 +6,11 @@ include 'json_from_id.php';
 $result = ob_get_clean(); // retrieve output from myfile.php, stop buffering
 // echo $result;
 $vids = json_decode($result, true);
+
+usort($vids, function($a, $b) {
+	return $a['id'] <=> $b['id'];
+});
+
 ?>
 
 <?php foreach($vids as $video): ?>
