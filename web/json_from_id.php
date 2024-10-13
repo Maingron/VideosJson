@@ -10,13 +10,15 @@ $vids[] = json_decode("{}", true);
 function getAllVids($vidsArray) {
 	foreach($vidsArray as $vid) {
 		if(is_numeric($vid)) {
-			$temp1 = json_decode(file_get_contents(VIDPATH . "/" . $vid . "/meta.json"), true);
-			if(isset($temp1[0])) { // We got a file with multiple videos in an array
-				foreach($temp1 as $subentry) {
-					$vids[] = $subentry;
+			if(file_exists(VIDPATH . "/" . $vid . "/meta.json")) {
+				$temp1 = json_decode(file_get_contents(VIDPATH . "/" . $vid . "/meta.json"), true);
+				if(isset($temp1[0])) { // We got a file with multiple videos in an array
+					foreach($temp1 as $subentry) {
+						$vids[] = $subentry;
+					}
+				} else {
+					$vids[] = $temp1;
 				}
-			} else {
-				$vids[] = $temp1;
 			}
 		}
 	}
