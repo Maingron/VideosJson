@@ -25,7 +25,7 @@ usort($vids, function($a, $b) {
 		<article>
 			<h2><?= $video['title'] ?> (ID: <?= $video['id']?>)</h2>
 			<div class="videoframe">
-				<button onclick="loadvidinframe(event, 'https://youtube.com/embed/<?=$video['links']['youtube']?>?autoplay=1')">
+				<button onclick="loadvidinframe(event, 'https://youtube.com/embed/<?=$video['links']['youtube'] ?? ''?>?autoplay=1')">
 					<img inert loading="lazy" src="<?= $video['thumbnails'][0]?>" alt="Load Video">
 				</button>
 			</div>
@@ -39,7 +39,7 @@ usort($vids, function($a, $b) {
 					<b>Category-2</b>: <span><?= $video['category-2']?></span><br>
 					<b>Links</b>:
 					<ul>
-						<?php foreach($video['links'] as $videoK => $videoV) {
+						<?php foreach($video['links'] ?? [] as $videoK => $videoV) {
 							echo '<li>';
 							switch ($videoK) {
 								case 'youtube':
