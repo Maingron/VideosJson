@@ -1,17 +1,30 @@
-{
-	"id": 1,
-	"title": "Bits & Bops",
-	"links": {
-		"youtube": "PwA0n2BjvAg",
-		"rumble": "https://rumble.com/v5hfvnx-bits-and-bops.html"
+[
+	{
+		"id": 1,
+		"title": "Bits & Bops",
+		"links": {
+			"youtube": "PwA0n2BjvAg",
+			"rumble": "https://rumble.com/v5hfvnx-bits-and-bops.html"
+		},
+		"lang": "de",
+		"description": "Und heute testen wir Bits und Bops. Voll cool!\r\n\r\nDinge verkloppen? Find ich gut! Du willst mitmachen? Verklopp' doch den Like- und Abobutton, und als Bonus wirst du nie wieder etwas verpassen! :)\r\n\r\nZur ganzen Ausprobier-Playlist: https://youtube.com/playlist?list=PLQ1G2JdfJ3cEeW-hf5IbIvDj5dXQpVuf_\r\n\r\nLive und in Lila: https://twitch.tv/maingron\r\nAlles auf Twitter: https://twitter.com/maingron\r\nAlles auf Bluesky: https://bsky.app/profile/maingron.bsky.social\r\nMeine Webseite: https://maingron.com\r\n\r\nHau rein! Heh",
+		"tags": "maingron,gaming,lets play,maingron lets play,maingron gaming,bits and bops,rythmus spiel,bits und bops,vögel,tweet,rythm,deutsch,german,spaß,lustig,blind,bits und bops meet and tweet,bits and bops hammer time,bits und bops deutsch,bits & bops,rhythm heaven,steam,pc gaming,demo,vorabversion,süß,cute,lümmeltüte,anfänger,hammerspiel,indie,first playthrough,nägel,preview,rythmus,computerspiel,videospiel,nagel,nail,rythmus nägel,vogel,gezwitscher",
+		"dateRec": 1706023800,
+		"datePub": 1706023800,
+		"pub": 2,
+		"category": "gaming",
+		"category-2": "Bits & Bops",
+		"thumbnails": []
 	},
-	"lang": "de",
-	"description": "Und heute testen wir Bits und Bops. Voll cool!\r\n\r\nDinge verkloppen? Find ich gut! Du willst mitmachen? Verklopp' doch den Like- und Abobutton, und als Bonus wirst du nie wieder etwas verpassen! :)\r\n\r\nZur ganzen Ausprobier-Playlist: https://youtube.com/playlist?list=PLQ1G2JdfJ3cEeW-hf5IbIvDj5dXQpVuf_\r\n\r\nLive und in Lila: https://twitch.tv/maingron\r\nAlles auf Twitter: https://twitter.com/maingron\r\nAlles auf Bluesky: https://bsky.app/profile/maingron.bsky.social\r\nMeine Webseite: https://maingron.com\r\n\r\nHau rein! Heh",
-	"tags": "maingron,gaming,lets play,maingron lets play,maingron gaming,bits and bops,rythmus spiel,bits und bops,vögel,tweet,rythm,deutsch,german,spaß,lustig,blind,bits und bops meet and tweet,bits and bops hammer time,bits und bops deutsch,bits & bops,rhythm heaven,steam,pc gaming,demo,vorabversion,süß,cute,lümmeltüte,anfänger,hammerspiel,indie,first playthrough,nägel,preview,rythmus,computerspiel,videospiel,nagel,nail,rythmus nägel,vogel,gezwitscher",
-	"dateRec": 1706023800,
-	"datePub": 1706023800,
-	"pub": 2,
-	"category": "gaming",
-	"category-2": "Bits & Bops",
-	"thumbnails": []
-}
+	{
+		"id": 7,
+		"title": "PowerWash Simulator",
+		"lang": "de",
+		"dateRec": 1728827549,
+		"pub": 2,
+		"category": "gaming",
+		"category-2": "PowerWash Simulator",
+		"thumbnails": []
+	}
+
+]
