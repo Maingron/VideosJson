@@ -40,6 +40,10 @@ usort($vids, function($a, $b) {
 					<b>Links</b>:
 					<ul>
 						<?php foreach($video['links'] ?? [] as $videoK => $videoV) {
+							if(!$videoV) {
+								continue;
+							}
+
 							echo '<li>';
 							switch ($videoK) {
 								case 'youtube':
