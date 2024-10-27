@@ -77,6 +77,15 @@ function addFallbackToVids($vidsjson) {
 			$vid['description'] = null;
 		}
 
+		// Convert to timestamps if human dates are used:
+		$convertKeyValuesToTimestamp = ['dateRec', 'datePub'];
+
+		foreach($convertKeyValuesToTimestamp as $vidKey) {
+			if(isset($vid[$vidKey]) && gettype($vid[$vidKey]) == 'string') {
+				$vid[$vidKey] = strtotime($vid[$vidKey]);
+			}
+		}
+
 		$newvidsjson[] = $vid;
 	}
 
