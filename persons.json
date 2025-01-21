@@ -10,7 +10,9 @@
 	"relations": null,
 	"parent": null,
 	"inherit": ["links", "relations", "parent"], // Array of predefined props or false
-	"links": { // Some keys like youtube will be common, but the keys may be custom. The following links should be standardized. Keys ending in "-NUMBER" (e.g. twitter-2, youtube-2) are to be considered. Those are other entries for the specific platform
+	"links": { // Some keys like youtube will be common, but the keys may be custom. The following links should be standardized. Keys ending in "-NUMBER" (e.g. bluesky-2, youtube-2) are to be considered. Those are other entries for the specific platform
+		"bluesky": null,
+		"mastodon": null,
 		"twitter": null,
 		"instagram": null,
 		"youtube": null,
@@ -32,7 +34,8 @@
 	"parent": null,
 	"pfp": "https://maingron.com/img/maingron.png",
 	"links": {
-		"twitter": "https://maingron.com/twitter",
+		"bluesky": "https://maingron.com/bluesky",
+		"mastodon": "https://maingron.com/mastodon",
 		"instagram": "https://maingron.com/instagram",
 		"youtube": "https://maingron.com/youtube",
 		"steam": "https://maingron.com/steam",
