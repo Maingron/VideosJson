@@ -232,5 +232,22 @@
 		"category": "gaming",
 		"category-2": "World Crafter TD",
 		"thumbnails": []
+	},
+	{
+		"id": 49,
+		"title": null,
+		"links": {
+			"youtube": null,
+			"rumble": null
+		},
+		"lang": "de",
+		"description": null,
+		"tags": "maingron,gaming,lets play,maingron lets play,maingron gaming,deutsch,gaming deutsch,Robin,2024,mostroscopy,Fight,Seashell Studio,Mostroscopy,2D Fighter,3D Fighter,Action,Fighting,Indie,monster",
+		"datePub": null,
+		"dateRec": null,
+		"pub": 2,
+		"category": "gaming",
+		"category-2": "Mostroscopy",
+		"thumbnails": []
 	}
 ]
