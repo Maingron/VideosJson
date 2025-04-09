@@ -13,11 +13,15 @@ usort($vids, function($a, $b) {
 
 ?>
 
-<header>
-	<search>
-		<input type="text" id="unisearch" placeholder="Search..." onkeyup="search.filter.handleUnisearch(this.value)" />
-	</search>
-</header>
+<div class="header-container">
+	<div class="header-content">
+		<header>
+			<search class="search-container">
+				<input type="text" id="unisearch" placeholder="Search..." onkeyup="search.filter.handleUnisearch(this.value)" />
+			</search>
+		</header>
+	</div>
+</div>
 
 <?php foreach($vids as $video): ?>
 	<?php
