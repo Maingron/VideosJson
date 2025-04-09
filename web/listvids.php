@@ -13,19 +13,24 @@ usort($vids, function($a, $b) {
 
 ?>
 
-<div class="header-container">
-	<div class="header-content">
-		<header>
-			<search class="search-container">
-				<input type="text" id="unisearch" placeholder="Search..." onkeyup="search.filter.handleUnisearch(this.value)" />
+<header>
+	<search class="search-container">
+		<input type="text" id="unisearch" placeholder="Search..." onkeyup="search.filter.handleUnisearch(this.value)" />
+		<details class="dropdown">
+			<summary>Options</summary>
+			<div class="content">
 				<label>
-					<input type="checkbox" id="ignore-whitespace" onchange="search.filter.toggleIgnoreWhitespace(this.checked); search.filter.handleUnisearch(document.getElementById('unisearch').value)" />
 					Ignore Whitespace
+					<input type="checkbox" id="ignore-whitespace" onchange="search.filter.toggleIgnoreWhitespace(this.checked); search.filter.handleUnisearch(document.getElementById('unisearch').value)" />
 				</label>
-			</search>
-		</header>
-	</div>
-</div>
+				<label>
+					Ignore Case
+					<input type="checkbox" id="ignore-case" onchange="search.filter.toggleIgnoreCase(this.checked); search.filter.handleUnisearch(document.getElementById('unisearch').value)" />
+				</label>
+			</div>
+		</details>
+	</search>
+</header>
 
 <?php foreach($vids as $video): ?>
 	<?php
