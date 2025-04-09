@@ -51,7 +51,7 @@ usort($vids, function($a, $b) {
 							echo '<li>';
 							switch ($videoK) {
 								case 'youtube':
-									echo "<a href='https://youtu.be/watch/?v=". $videoV . "'>Youtube</a>";
+									echo "<a href='https://www.youtube.com/watch?v=". $videoV . "'>Youtube</a>";
 									break;
 								case 'rumble':
 									echo "<a href='". $videoV . "'>Rumble</a>";

@@ -65,6 +65,25 @@ if($input_videoId != null) {
 function addFallbackToVids($vidsjson) {
 	$newvidsjson = [];
 	foreach($vidsjson as $vid) {
+
+		if(isset($vid['links'])) {
+			if(isset($vid['links']['yt']) && !isset($vid['links']['youtube'])) {
+				$vid['links']['youtube'] = $vid['links']['yt'];
+				unset($vid['links']['yt']);
+			}
+
+			if(isset($vid['links']['youtube'])) {
+				$ytK = &$vid['links']['youtube'];
+				// make sure we only get the video id, not the full url, since we'll manipulate it later
+				if(strpos($ytK, "://") || strpos($ytK, "//youtu") || strpos($ytK, "youtu.be/") || strpos($ytK, "youtube.com/")) {
+					preg_match('/(?:v=|\/)([a-zA-Z0-9_-]{11})/', $ytK, $matches);
+					if (!empty($matches[1])) {
+						$ytK = $matches[1];
+					}
+				}
+			}
+		}
+		
 		if(!isset($vid['thumbnails']) || empty($vid['thumbnails'])) {
 			if(isset($vid['links']['youtube'])) {
 				$vid['thumbnails'][0] = "https://img.youtube.com/vi/".$vid['links']['youtube']."/maxresdefault.jpg";
