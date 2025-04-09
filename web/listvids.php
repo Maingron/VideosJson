@@ -20,10 +20,28 @@ usort($vids, function($a, $b) {
 		}
 	?>
 
-	<details class="video" open>
-		<summary hidden><?= $video['title'] ?> (ID: <?= $video['id']?>)</summary>
+	<?php $videoAnchor = 'v-' . ($video['pub'] ?? 'x' ) . "-" . ($video['id'] ?? 'x'); ?>
+	<details class="video" id="<?=$videoAnchor?>" open>
+		<summary>
+			<h2><a class="summary-dbid" href="#<?=$videoAnchor?>"><?= $video['id']?></a> <?= $video['title'] ?></h2>
+			<span class="summary-closedinfo">
+				<span class="summary-closedinfo-pub">
+					<?= $video['pub'] ?? ''; ?>
+				</span>
+
+				<span class="summary-closedinfo-date">
+				<?php $mySummaryClosedInfoTime = $video['datePub'] ??!1?: $video['dateRec'] ?? 0 ?>
+					<?php if($mySummaryClosedInfoTime): ?>
+						<?= date('Y-m-d H:i', $video['datePub'] ??!1?: $video['dateRec'] ?? 0); ?>
+					<?php endif; ?>
+				</span>
+				<span class="summary-closedinfo-cat">
+					<?= $video['category-2'] ??!1?: $video['category']; ?>
+				</span>
+			</span>
+		</summary>
 		<article>
-			<h2><?= $video['title'] ?> (ID: <?= $video['id']?>)</h2>
+			<h2 hidden><?= $video['title'] ?> (ID: <?= $video['id']?>)</h2>
 			<div class="videoframe">
 				<button onclick="loadvidinframe(event, 'https://youtube.com/embed/<?=$video['links']['youtube'] ?? ''?>?autoplay=1')">
 					<img inert loading="lazy" src="<?= $video['thumbnails'][0]?>" alt="Load Video">
@@ -90,6 +108,16 @@ usort($vids, function($a, $b) {
 				</p>
 			</div>
 		</article>
+
+		<?php if(
+				!isset($video['links']) || empty($video['links']) &&
+				!$video['description'] || strlen($video['description'] < 5) &&
+				!isset($video['thumbnails'][0])): ?>
+			<script>
+				document.currentScript.closest('details').removeAttribute('open');
+				document.currentScript.remove();
+			</script>
+		<?php endif; ?>
 	</details>
 	<br>
 

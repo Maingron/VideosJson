@@ -8,6 +8,8 @@ html, body {
 	padding: 0;
 	background-color: #000;
 	color: #fff;
+	scroll-behavior: smooth;
+	scroll-padding-top: 30px;
 }
 
 * {
@@ -26,12 +28,73 @@ html, body {
 	overflow: hidden;
 	max-width: 1500px;
 
-	h2 {
-		margin: 0 30px 1em 30px;
+	>summary {
+		list-style: none;
+		display: flex;
+		flex-direction: row;
+		align-items: space-between;
+		width: 100%;
+		flex-wrap: nowrap;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		&::before {
+			content: none;
+			display: none;
+		}
+
+		h2 {
+			display: inline-block;
+		}
+
+		.summary-dbid {
+			display: inline-block;
+			border-radius: 4px;
+			padding: 0 4px;
+			background: #000;
+			
+		}
+
+		.summary-closedinfo {
+			display: inline-flex;
+			justify-content: space-between;
+			width: 100%;
+			flex: 1;
+
+			>span {
+				display: inline-block;
+				margin-right: 3ch;
+
+				&.summary-closedinfo-date {
+					min-width: 16ch;
+				}
+			}
+		}
 	}
+
+	h2 {
+		margin: 0 30px;
+	}
+
+	&[open] {
+		h2 {
+			margin: 0 30px 1em 30px;
+		}
+
+		>summary {
+			.summary-closedinfo {
+				display: none;
+			}
+		}
+
+	}
+
 
 	h3 {
 		margin-top: 0;
+		text-decoration: underline;
 	}
 
 	.description {
