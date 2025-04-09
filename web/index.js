@@ -42,11 +42,12 @@ var search = (function() {
 				if (config.ignoreWhitespace) {
 					entryText = entryText.replace(/\s|-/g, "");
 				}
-				if (!entryText.includes(querySan)) {
+				if (!entryText.toLowerCase().includes(querySan)) {
 					entry.setAttribute("hidden", "hidden");
 				}
 			}
 		},
+
 		containsTags: function(tag) {
 			window.setTimeout(function() {
 				const tagSan = tag?.toLowerCase();
@@ -58,9 +59,7 @@ var search = (function() {
 							break;
 						}
 					}
-					if(tagFound) {
-						// show the entry
-					} else {
+					if(!tagFound) {
 						entry.setAttribute("hidden", "hidden");
 					}
 				}
@@ -72,7 +71,7 @@ var search = (function() {
 				let entryText = entry.querySelector(".info>details pre").innerHTML;
 				entryText = entryText.replaceAll("] => ", ":");
 				entryText = entryText.replaceAll("] =&gt; ", ":");
-				if (entryText.includes(querySan)) {
+				if (entryText.toLowerCase().includes(querySan)) {
 					entry.setAttribute("hidden", "hidden");
 				}
 			}
@@ -140,22 +139,31 @@ var search = (function() {
 				clearTimeout(currentSearchTimeout);
 			}, config.keyTimeout);
 		}
-	}
+	};
 
+	let updateUrlFlags = function() {
+		const newUrl = new URL(window.location.href);
+		newUrl.searchParams.set("ignore-whitespace", config.ignoreWhitespace);
+		window.history.replaceState({}, "", newUrl);
+	};
 
 	return {
 		hideAll: hideAll,
 		showAll: showAll,
-		filter: filter
-	}
+		filter: filter,
+		updateUrlFlags: updateUrlFlags
+	};
 }());
 
 document.addEventListener("DOMContentLoaded", function() {
 	let unisearchElement = document.getElementById("unisearch");
+	let ignoreWhitespaceElement = document.getElementById("ignore-whitespace");
 
-	// Use search parameter from URL
+	// Use search parameters from URL
 	const urlParams = new URLSearchParams(window.location.search);
 	const initialSearch = urlParams.get("search");
+	const initialIgnoreWhitespace = urlParams.get("ignore-whitespace") === "true";
+
 	if (unisearchElement && search) {
 		if (initialSearch) {
 			unisearchElement.value = initialSearch;
@@ -164,7 +172,12 @@ document.addEventListener("DOMContentLoaded", function() {
 		search.filter.handleUnisearch(unisearchElement.value);
 	}
 
-	// Update URL when search bar value changes
+	if (ignoreWhitespaceElement) {
+		ignoreWhitespaceElement.checked = initialIgnoreWhitespace;
+		search.filter.toggleIgnoreWhitespace(initialIgnoreWhitespace);
+	}
+
+	// Update URL when search bar or flags change
 	if (unisearchElement) {
 		unisearchElement.addEventListener("input", function() {
 			const newSearch = unisearchElement.value;
@@ -176,6 +189,13 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 			window.history.replaceState({}, "", newUrl);
 			search.filter.handleUnisearch(newSearch);
+		});
+	}
+
+	if (ignoreWhitespaceElement) {
+		ignoreWhitespaceElement.addEventListener("change", function() {
+			search.filter.toggleIgnoreWhitespace(ignoreWhitespaceElement.checked);
+			search.updateUrlFlags();
 		});
 	}
 

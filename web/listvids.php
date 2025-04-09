@@ -21,11 +21,11 @@ usort($vids, function($a, $b) {
 			<div class="content">
 				<label>
 					Ignore Whitespace
-					<input type="checkbox" id="ignore-whitespace" onchange="search.filter.toggleIgnoreWhitespace(this.checked); search.filter.handleUnisearch(document.getElementById('unisearch').value)" />
+					<input type="checkbox" id="ignore-whitespace" onchange="search.filter.toggleIgnoreWhitespace(this.checked); search.updateUrlFlags();" />
 				</label>
 				<label>
 					Ignore Case
-					<input type="checkbox" id="ignore-case" onchange="search.filter.toggleIgnoreCase(this.checked); search.filter.handleUnisearch(document.getElementById('unisearch').value)" />
+					<input type="checkbox" id="ignore-case" disabled checked="checked" />
 				</label>
 			</div>
 		</details>
