@@ -60,6 +60,32 @@ var search = (function() {
 				}
 			}, 0);
 		},
+		containsNot: function(query) {
+			const querySan = query.toLowerCase();
+			for (let entry of document.querySelectorAll(config.itemSelector + ":not([hidden])")) {
+				let entryText = entry.querySelector(".info>details pre").innerHTML;
+				entryText = entryText.replaceAll("] => ", ":");
+				entryText = entryText.replaceAll("] =&gt; ", ":");
+				if (entryText.includes(querySan)) {
+					entry.setAttribute("hidden", "hidden");
+				}
+			}
+		},
+		containsNotTags: function(tag) {
+			const tagSan = tag?.toLowerCase();
+			for (let entry of document.querySelectorAll(config.itemSelector + ":not([hidden])")) {
+				let tagFound = false;
+				for (let tagElement of entry.querySelectorAll(".tag")) {
+					if (tagElement.innerText.toLowerCase().includes(tagSan)) {
+						tagFound = true;
+						break;
+					}
+				}
+				if (tagFound) {
+					entry.setAttribute("hidden", "hidden");
+				}
+			}
+		},
 
 		handleUnisearch: function(query) {
 			const querySan = query?.toLowerCase()?.trim();
@@ -82,7 +108,19 @@ var search = (function() {
 				showAll();
 
 				for(let part of queryParts) {
-					if(part.includes("tags:")) {
+					if (part.startsWith("not:tags:")) {
+						part = part.split("not:tags:")[1];
+						part = part.trim();
+						part = part.replace(/['"]/g, "");
+						filter.containsNotTags(part);
+						continue;
+					} else if (part.startsWith("not:")) {
+						part = part.split("not:")[1];
+						part = part.trim();
+						part = part.replace(/['"]/g, "");
+						filter.containsNot(part);
+						continue;
+					} else if(part.includes("tags:")) {
 						part = part.split("tags:")[1];
 						part = part.trim();
 						part = part.replace(/['"]/g, "");
