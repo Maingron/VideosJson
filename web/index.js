@@ -5,9 +5,10 @@ function loadvidinframe(event, link) {
 
 
 var search = (function() {
-	const config = {
+	let config = {
 		itemSelector: "details.video",
-		keyTimeout: 200,
+		unisearchElementSelector: "#unisearch",
+		keyTimeout: 50,
 		ignoreWhitespace: false
 	}
 
@@ -145,6 +146,8 @@ var search = (function() {
 		const newUrl = new URL(window.location.href);
 		newUrl.searchParams.set("ignore-whitespace", config.ignoreWhitespace);
 		window.history.replaceState({}, "", newUrl);
+		prevSearch = "";
+		filter.handleUnisearch(document.querySelector(config.unisearchElementSelector).value);
 	};
 
 	return {
