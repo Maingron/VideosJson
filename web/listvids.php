@@ -33,8 +33,12 @@ usort($vids, function($a, $b) {
 				<h3><?= $video['title'] ?></h3>
 				<p>
 					<b>Publisher</b>: <?= $video['pub'] ?><br>
-					<b>Date of Publishing</b>: <?= date('l, Y-m-d H:i', $video['datePub'] ?? 0); ?> (<?= date('d.m.Y H:i', $video['datePub'] ?? 0); ?>)<br>
-					<b>Date of Recording</b>: <?= date('l, Y-m-d H:i', $video['dateRec'] ?? 0); ?> (<?= date('d.m.Y H:i', $video['dateRec'] ?? 0); ?>)<br>
+					<?php if($video['datePub'] ?? !1): ?>
+						<b>Date of Publishing</b>: <?= date('l, Y-m-d H:i', $video['datePub'] ?? 0); ?> (<?= date('d.m.Y H:i', $video['datePub'] ?? 0); ?>)<br>
+					<?php endif; ?>
+					<?php if($video['dateRec'] ?? !1): ?>
+						<b>Date of Recording</b>: <?= date('l, Y-m-d H:i', $video['dateRec'] ?? 0); ?> (<?= date('d.m.Y H:i', $video['dateRec'] ?? 0); ?>)<br>
+					<?php endif; ?>
 					<b>Category</b>: <span><?= $video['category']?></span><br>
 					<b>Category-2</b>: <span><?= $video['category-2']?></span><br>
 					<b>Links</b>:
