@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="/web/css/style.min.css">
 		<script src="/web/index.js"></script>
 	</head>
-	<body>
+	<body class="waitforinit">
 		<?php
 			require_once("listvids.php");
 		?>

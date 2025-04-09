@@ -13,6 +13,12 @@ usort($vids, function($a, $b) {
 
 ?>
 
+<header>
+	<search>
+		<input type="text" id="unisearch" placeholder="Search..." onkeyup="search.filter.handleUnisearch(this.value)" />
+	</search>
+</header>
+
 <?php foreach($vids as $video): ?>
 	<?php
 		if(!isset($video['id']) || !isset($video['title'])) {
@@ -119,6 +125,5 @@ usort($vids, function($a, $b) {
 			</script>
 		<?php endif; ?>
 	</details>
-	<br>
 
 <?php endforeach; ?>

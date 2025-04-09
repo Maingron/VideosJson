@@ -16,17 +16,27 @@ html, body {
 	box-sizing: border-box;
 }
 
+body.waitforinit {
+	.video {
+		display: none;
+	}
+}
+
 .video {
 	display: flex;
 	flex-direction: column !important;
 	width: calc(100% - 30px);
 	padding: 1em 0;
-	margin: .5em auto;
+	margin: .5em auto 1em auto;
 	background: #444444;
 	border-radius: 12px;
 	position: relative;
 	overflow: hidden;
 	max-width: 1500px;
+
+	&[hidden] {
+		display: none;
+	}
 
 	>summary {
 		list-style: none;
