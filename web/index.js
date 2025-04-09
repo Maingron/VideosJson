@@ -7,7 +7,8 @@ function loadvidinframe(event, link) {
 var search = (function() {
 	const config = {
 		itemSelector: "details.video",
-		keyTimeout: 200
+		keyTimeout: 200,
+		ignoreWhitespace: false
 	}
 
 	let prevSearch;
@@ -29,14 +30,19 @@ var search = (function() {
 	}
 
 	let filter = {
+		toggleIgnoreWhitespace: function(enabled) {
+			config.ignoreWhitespace = enabled;
+		},
+
 		containsAny: function(query) {
-			const querySan = query.toLowerCase();
-			for(let entry of document.querySelectorAll(config.itemSelector + ":not([hidden])")) {
-				entryText = entry.querySelector(".info>details pre").innerHTML;
-				entryText = entryText.replaceAll("] => ", ":");
-				entryText = entryText.replaceAll("] =&gt; ", ":");
-				if(entryText.includes(querySan)) {
-				} else {
+			const querySan = config.ignoreWhitespace ? query.toLowerCase().replace(/\s|-/g, "") : query.toLowerCase();
+			for (let entry of document.querySelectorAll(config.itemSelector + ":not([hidden])")) {
+				let entryText = entry.querySelector(".info>details pre").innerHTML;
+				entryText = entryText.replaceAll("] => ", ":").replaceAll("] =&gt; ", ":");
+				if (config.ignoreWhitespace) {
+					entryText = entryText.replace(/\s|-/g, "");
+				}
+				if (!entryText.includes(querySan)) {
 					entry.setAttribute("hidden", "hidden");
 				}
 			}

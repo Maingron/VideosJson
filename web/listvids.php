@@ -18,6 +18,10 @@ usort($vids, function($a, $b) {
 		<header>
 			<search class="search-container">
 				<input type="text" id="unisearch" placeholder="Search..." onkeyup="search.filter.handleUnisearch(this.value)" />
+				<label>
+					<input type="checkbox" id="ignore-whitespace" onchange="search.filter.toggleIgnoreWhitespace(this.checked); search.filter.handleUnisearch(document.getElementById('unisearch').value)" />
+					Ignore Whitespace
+				</label>
 			</search>
 		</header>
 	</div>
