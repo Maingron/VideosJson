@@ -108,9 +108,31 @@ var search = (function() {
 
 document.addEventListener("DOMContentLoaded", function() {
 	let unisearchElement = document.getElementById("unisearch");
-	if(unisearchElement && search) {
+
+	// Use search parameter from URL
+	const urlParams = new URLSearchParams(window.location.search);
+	const initialSearch = urlParams.get("search");
+	if (unisearchElement && search) {
+		if (initialSearch) {
+			unisearchElement.value = initialSearch;
+		}
 		search.hideAll();
 		search.filter.handleUnisearch(unisearchElement.value);
+	}
+
+	// Update URL when search bar value changes
+	if (unisearchElement) {
+		unisearchElement.addEventListener("input", function() {
+			const newSearch = unisearchElement.value;
+			const newUrl = new URL(window.location.href);
+			if (newSearch) {
+				newUrl.searchParams.set("search", newSearch);
+			} else {
+				newUrl.searchParams.delete("search");
+			}
+			window.history.replaceState({}, "", newUrl);
+			search.filter.handleUnisearch(newSearch);
+		});
 	}
 
 	document.body.classList.remove("waitforinit");
