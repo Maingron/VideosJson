@@ -86,7 +86,7 @@ function addFallbackToVids($vidsjson) {
 		
 		if(!isset($vid['thumbnails']) || empty($vid['thumbnails'])) {
 			if(isset($vid['links']['youtube'])) {
-				$vid['thumbnails'][0] = "https://img.youtube.com/vi/".$vid['links']['youtube']."/maxresdefault.jpg";
+				$vid['thumbnails'][0] = "https://img.youtube.com/vi_webp/".$vid['links']['youtube']."/maxresdefault.webp";
 			} else {
 				$vid['thumbnails'][] = "";
 			}
