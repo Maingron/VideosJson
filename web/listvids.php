@@ -170,7 +170,7 @@ usort($vids, function($a, $b) {
 		const categoryOptions = Array.from(categories).map(cat => `<option value="${cat}">${cat}</option>`).join('');
 		const category2Options = Array.from(categories2).sort().map(cat2 => `<option value="${cat2}">${cat2}</option>`).join('');
 		const publisherOptions = Array.from(publishers).map(pub => `<option value="${pub}">${pub}</option>`).join('');
-		const linkTypeOptions = Array.from(linkTypes).map(type => `<option value="${type}">${type}</option>`).join('');
+		const linkTypeOptions = Array.from(linkTypes).map(type => `<option value="${type.toLowerCase()}">${type}</option>`).join('');
 
 		// Determine the highest existing ID
 		const highestId = Math.max(...Array.from(document.querySelectorAll('.video')).map(v => parseInt(v.id.split('-').pop()) || 0));
